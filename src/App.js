@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // BrowserRouter로 감싸고, Routes 사용
+import NewsList from './components/NewsList';
+import NewsDetail from './components/NewsDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1>뉴스 번역 & 산업 시세 분석</h1>
+        </header>
+        <Routes>
+          {/* React Router v6에서 Routes와 Route를 사용 */}
+          <Route path="/" element={<NewsList />} />
+          <Route path="/news/:id" element={<NewsDetail />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
